@@ -1,0 +1,6 @@
+framework module Pods_TindogUITests {
+  umbrella header "Pods-TindogUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
