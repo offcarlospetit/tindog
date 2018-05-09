@@ -40,6 +40,12 @@ class HomeViewController: UIViewController {
         let cardPoint = gesturerecognized.translation(in: view)
         self.CardView.center = CGPoint(x: self.view.bounds.width / 2 + cardPoint.x, y: self.view.bounds.height / 2 + cardPoint.y)
         
+        let xFromCenter = self.view.bounds.width / 2 - self.CardView.center.x
+        var rotate = CGAffineTransform(rotationAngle: xFromCenter / 200)
+        let scale = min(100 / abs(xFromCenter), 1)
+        var finalTransform = rotate.scaledBy(x: scale, y: scale)
+        self.CardView.transform = rotate
+        
         if gesturerecognized.state == .ended{
             //print(self.CardView.center.x)
             if self.CardView.center.x < (self.view.bounds.width / 2 - 100){
@@ -49,6 +55,8 @@ class HomeViewController: UIViewController {
                 print("Like")
             }
             //reinicio
+            finalTransform = rotate.scaledBy(x: 1, y: 1)
+            rotate = CGAffineTransform(rotationAngle: 0)
             self.CardView.center = CGPoint(x: self.homeWrapper.bounds.width / 2, y: (self.homeWrapper.bounds.height / 2 - 30) )
         }
     }
