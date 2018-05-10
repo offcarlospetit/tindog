@@ -30,43 +30,53 @@ class HomeViewController: UIViewController {
         let titleView = NavigationImageView() //creo el objeto de tipo NavigationImageView() (clase que previaente sobreescribi)
         titleView.image = UIImage(named:"Actions") //le paso la imagen que quiero cargar en la barra al objeto que cree
         self.navigationItem.titleView = titleView // le asigno la imagen a la barra con el objeto titleVIew
-        let homeGCR = UIPanGestureRecognizer(target: self, action: #selector(cardDragged(gesturerecognized: )))
+        let homeGCR = UIPanGestureRecognizer(target: self, action: #selector(cardDragged(gestureRecognizer: )))
         self.CardView.addGestureRecognizer(homeGCR)
         /////
         
         // Do any additional setup after loading the view.
     }
     
-    @objc func cardDragged(gesturerecognized: UIPanGestureRecognizer){
+    @objc func cardDragged(gestureRecognizer: UIPanGestureRecognizer){
         //print("drag \(gesturerecognized.translation(in: view))")
-        let cardPoint = gesturerecognized.translation(in: view)
-        self.CardView.center = CGPoint(x: self.view.bounds.width / 2 + cardPoint.x, y: self.view.bounds.height / 2 + cardPoint.y)
+        let CardPoint = gestureRecognizer.translation(in: view)
+        self.CardView.center = CGPoint(x: self.view.bounds.width / 2 + CardPoint.x , y: self.view.bounds.height / 2 + CardPoint.y)
         
         let xFromCenter = self.view.bounds.width / 2 - self.CardView.center.x
         var rotate = CGAffineTransform(rotationAngle: xFromCenter / 200)
         let scale = min(100 / abs(xFromCenter), 1)
         var finalTransform = rotate.scaledBy(x: scale, y: scale)
-        self.CardView.transform = rotate
+        
+        self.CardView.transform = finalTransform
+        
+        if self.CardView.center.x < (self.view.bounds.width / 2 - 100){
+            self.nope_image.alpha = min(abs(xFromCenter) / 100, 1)
+        }
+        if self.CardView.center.x > (self.view.bounds.width / 2 + 100){
+            self.likeImage.alpha = min(abs(xFromCenter) / 100, 1)
+        }
+
         
         
-        
-        
-        if gesturerecognized.state == .ended{
+        if gestureRecognizer.state == .ended{
             //print(self.CardView.center.x)
             if self.CardView.center.x < (self.view.bounds.width / 2 - 100){
-                self.nope_image.alpha = min(abs(xFromCenter) / 100, 1)
+                
             }
             if self.CardView.center.x > (self.view.bounds.width / 2 + 100){
-                self.likeImage.alpha = min(abs(xFromCenter) / 100, 1)
+                
             }
             
             
             //reinicio
-            self.nope_image.alpha = 0
-            self.likeImage.alpha = 0
-            finalTransform = rotate.scaledBy(x: 1, y: 1)
             rotate = CGAffineTransform(rotationAngle: 0)
-            self.CardView.center = CGPoint(x: self.homeWrapper.bounds.width / 2, y: (self.homeWrapper.bounds.height / 2 - 30) )
+            finalTransform  = rotate.scaledBy(x: 1, y: 1)
+            self.CardView.transform = finalTransform
+            self.likeImage.alpha = 0
+            self.nope_image.alpha = 0
+            
+            self.CardView.center = CGPoint(x: self.homeWrapper.bounds.width / 2 , y: (self.homeWrapper.bounds.height / 2 - 30) )
+
             
         }
     }
