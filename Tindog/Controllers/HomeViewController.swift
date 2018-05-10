@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RevealingSplashView
 
 class NavigationImageView : UIImageView{
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -21,10 +22,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeWrapper: UIStackView!
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var nope_image: UIImageView!
+    let revealingSplashScreen = RevealingSplashView(iconImage: UIImage(named: "splash_icon")!, iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: UIColor.white)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //carga de splash
+        self.view.addSubview(self.revealingSplashScreen)
+        self.revealingSplashScreen.animationType = SplashAnimationType.popAndZoomOut
+        self.revealingSplashScreen.startAnimation()
         
         //set Icon navigation bar
         let titleView = NavigationImageView() //creo el objeto de tipo NavigationImageView() (clase que previaente sobreescribi)
