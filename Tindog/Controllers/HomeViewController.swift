@@ -40,7 +40,22 @@ class HomeViewController: UIViewController {
         self.CardView.addGestureRecognizer(homeGCR)
         /////
         
+        let leftBtn = UIButton(type: .custom)
+        leftBtn.setImage(UIImage(named: "login"), for: .normal)
+        leftBtn.imageView?.contentMode = .scaleAspectFit
+        leftBtn.addTarget(self, action: #selector(goToLogin(sender:)), for: .touchUpInside)
+        let leftBarButton = UIBarButtonItem(customView: leftBtn)
+        
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func goToLogin(sender: UIButton){
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let loginViewControoler = storyBoard.instantiateViewController(withIdentifier: "LoginVC")
+        present(loginViewControoler, animated: true, completion: nil)
+        
     }
     
     @objc func cardDragged(gestureRecognizer: UIPanGestureRecognizer){
