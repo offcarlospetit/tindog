@@ -17,6 +17,7 @@
 		C267FAB020A09A5700B6B0B9 /* TindogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FAAF20A09A5700B6B0B9 /* TindogTests.swift */; };
 		C267FABB20A09A5700B6B0B9 /* TindogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FABA20A09A5700B6B0B9 /* TindogUITests.swift */; };
 		C28669AD20A5370500FE97D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28669AC20A5370500FE97D3 /* LoginViewController.swift */; };
+		C28669B020A53FEA00FE97D3 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28669AF20A53FEA00FE97D3 /* UIViewExt.swift */; };
 		D95D0D7A21C99678122B0130 /* Pods_TindogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F95E8659EFA3DB152482D55 /* Pods_TindogTests.framework */; };
 		FADB969E3D081A69E72A44C0 /* Pods_Tindog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B996043480FA659F04648EAC /* Pods_Tindog.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		C267FABA20A09A5700B6B0B9 /* TindogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TindogUITests.swift; sourceTree = "<group>"; };
 		C267FABC20A09A5700B6B0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C28669AC20A5370500FE97D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C28669AF20A53FEA00FE97D3 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		C5FEF68ADBACF1B240C55F6B /* Pods-TindogUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TindogUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TindogUITests/Pods-TindogUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F2F09F874E3573FFF4317772 /* Pods_TindogUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TindogUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE8ECFB813E6C05287BBC8B /* Pods-Tindog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tindog.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tindog/Pods-Tindog.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		C267FA9620A09A5400B6B0B9 /* Tindog */ = {
 			isa = PBXGroup;
 			children = (
+				C28669AE20A53FA400FE97D3 /* Extensions */,
 				C20A98C320A3440500C482E2 /* Controllers */,
 				C267FA9720A09A5400B6B0B9 /* AppDelegate.swift */,
 				C267FA9B20A09A5400B6B0B9 /* Main.storyboard */,
@@ -177,6 +180,14 @@
 				C267FABC20A09A5700B6B0B9 /* Info.plist */,
 			);
 			path = TindogUITests;
+			sourceTree = "<group>";
+		};
+		C28669AE20A53FA400FE97D3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C28669AF20A53FEA00FE97D3 /* UIViewExt.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +402,7 @@
 			files = (
 				C28669AD20A5370500FE97D3 /* LoginViewController.swift in Sources */,
 				C267FAA020A09A5400B6B0B9 /* Tindog.xcdatamodeld in Sources */,
+				C28669B020A53FEA00FE97D3 /* UIViewExt.swift in Sources */,
 				C267FA9820A09A5400B6B0B9 /* AppDelegate.swift in Sources */,
 				C20A98C520A3445C00C482E2 /* HomeViewController.swift in Sources */,
 			);

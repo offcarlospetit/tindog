@@ -198,7 +198,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bJN-81-RBw">
                                                 <rect key="frame" x="0.0" y="0.0" width="275" height="199"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="usuario@usuario.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYk-oJ-mKj">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="usuario@usuario.com" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYk-oJ-mKj">
                                                         <rect key="frame" x="12.5" y="0.0" width="250" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Gc7-0A-aNV"/>
@@ -208,7 +208,7 @@
                                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riw-EC-wq1">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riw-EC-wq1">
                                                         <rect key="frame" x="12.5" y="67" width="250" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="e1C-D1-Vwc"/>
@@ -245,11 +245,24 @@
                                     <constraint firstAttribute="width" constant="275" id="eAq-Mb-qCg"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnm-zd-Pnh">
+                                <rect key="frame" x="15" y="30" width="23" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="Y4f-Yi-MBG"/>
+                                    <constraint firstAttribute="height" constant="23" id="sjU-Ge-XHM"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="close_modal"/>
+                                <connections>
+                                    <action selector="close:" destination="tCE-0J-Zk2" eventType="touchUpInside" id="Iwg-jc-ESX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Vmz-LC-pdi" firstAttribute="centerX" secondItem="D9u-0E-yAM" secondAttribute="centerX" id="FwV-mk-A0Q"/>
+                            <constraint firstItem="Qnm-zd-Pnh" firstAttribute="top" secondItem="iZW-kZ-WEL" secondAttribute="top" constant="10" id="RbW-u4-hdC"/>
                             <constraint firstItem="Vmz-LC-pdi" firstAttribute="centerY" secondItem="D9u-0E-yAM" secondAttribute="centerY" id="gmg-fc-zoN"/>
+                            <constraint firstItem="Qnm-zd-Pnh" firstAttribute="leading" secondItem="iZW-kZ-WEL" secondAttribute="leading" constant="15" id="lDN-l4-LXs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iZW-kZ-WEL"/>
                     </view>
@@ -284,6 +297,7 @@
         <image name="Rewind" width="51" height="51"/>
         <image name="Super Like" width="51" height="51"/>
         <image name="Swipe Card" width="356" height="507"/>
+        <image name="close_modal" width="23" height="23"/>
         <image name="crispeta" width="1080" height="1079"/>
         <image name="like_image" width="170" height="114"/>
         <image name="login_btn_bg" width="256" height="65"/>

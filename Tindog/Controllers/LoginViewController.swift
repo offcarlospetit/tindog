@@ -10,10 +10,22 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBAction func close(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.bindKeyboard()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        self.view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer){
+        
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
