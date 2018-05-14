@@ -19,6 +19,8 @@
 		C28669AD20A5370500FE97D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28669AC20A5370500FE97D3 /* LoginViewController.swift */; };
 		C28669B020A53FEA00FE97D3 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28669AF20A53FEA00FE97D3 /* UIViewExt.swift */; };
 		C28669B220A5437200FE97D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C28669B120A5437200FE97D3 /* GoogleService-Info.plist */; };
+		C2BDD6A920A78D44008997BE /* DataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDD6A820A78D44008997BE /* DataBaseService.swift */; };
+		C2BDD6B120A91451008997BE /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDD6B020A91451008997BE /* PerfilViewController.swift */; };
 		D95D0D7A21C99678122B0130 /* Pods_TindogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F95E8659EFA3DB152482D55 /* Pods_TindogTests.framework */; };
 		FADB969E3D081A69E72A44C0 /* Pods_Tindog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B996043480FA659F04648EAC /* Pods_Tindog.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,8 @@
 		C28669AC20A5370500FE97D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C28669AF20A53FEA00FE97D3 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		C28669B120A5437200FE97D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C2BDD6A820A78D44008997BE /* DataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseService.swift; sourceTree = "<group>"; };
+		C2BDD6B020A91451008997BE /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		C5FEF68ADBACF1B240C55F6B /* Pods-TindogUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TindogUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TindogUITests/Pods-TindogUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F2F09F874E3573FFF4317772 /* Pods_TindogUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TindogUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE8ECFB813E6C05287BBC8B /* Pods-Tindog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tindog.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tindog/Pods-Tindog.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			children = (
 				C20A98C420A3445C00C482E2 /* HomeViewController.swift */,
 				C28669AC20A5370500FE97D3 /* LoginViewController.swift */,
+				C2BDD6B020A91451008997BE /* PerfilViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 		C267FA9620A09A5400B6B0B9 /* Tindog */ = {
 			isa = PBXGroup;
 			children = (
+				C2BDD6A720A78CF2008997BE /* Services */,
 				C28669AE20A53FA400FE97D3 /* Extensions */,
 				C20A98C320A3440500C482E2 /* Controllers */,
 				C267FA9720A09A5400B6B0B9 /* AppDelegate.swift */,
@@ -191,6 +197,14 @@
 				C28669AF20A53FEA00FE97D3 /* UIViewExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C2BDD6A720A78CF2008997BE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C2BDD6A820A78D44008997BE /* DataBaseService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,8 +428,10 @@
 			files = (
 				C28669AD20A5370500FE97D3 /* LoginViewController.swift in Sources */,
 				C267FAA020A09A5400B6B0B9 /* Tindog.xcdatamodeld in Sources */,
+				C2BDD6A920A78D44008997BE /* DataBaseService.swift in Sources */,
 				C28669B020A53FEA00FE97D3 /* UIViewExt.swift in Sources */,
 				C267FA9820A09A5400B6B0B9 /* AppDelegate.swift in Sources */,
+				C2BDD6B120A91451008997BE /* PerfilViewController.swift in Sources */,
 				C20A98C520A3445C00C482E2 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,7 +609,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V483VY873;
 				INFOPLIST_FILE = Tindog/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.Tindog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -609,7 +628,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V483VY873;
 				INFOPLIST_FILE = Tindog/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.Tindog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -626,7 +648,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V483VY873;
 				INFOPLIST_FILE = TindogTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.TindogTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -644,7 +670,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V483VY873;
 				INFOPLIST_FILE = TindogTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.TindogTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -661,7 +691,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V483VY873;
 				INFOPLIST_FILE = TindogUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.TindogUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -678,7 +712,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V483VY873;
 				INFOPLIST_FILE = TindogUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.TindogUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

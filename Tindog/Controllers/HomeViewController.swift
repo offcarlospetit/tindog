@@ -8,6 +8,7 @@
 
 import UIKit
 import RevealingSplashView
+import Firebase
 
 class NavigationImageView : UIImageView{
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -22,6 +23,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeWrapper: UIStackView!
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var nope_image: UIImageView!
+    
+    let leftBtn = UIButton(type: .custom)
+    
     let revealingSplashScreen = RevealingSplashView(iconImage: UIImage(named: "splash_icon")!, iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: UIColor.white)
     
     
@@ -40,23 +44,40 @@ class HomeViewController: UIViewController {
         self.CardView.addGestureRecognizer(homeGCR)
         /////
         
-        let leftBtn = UIButton(type: .custom)
-        leftBtn.setImage(UIImage(named: "login"), for: .normal)
-        leftBtn.imageView?.contentMode = .scaleAspectFit
-        leftBtn.addTarget(self, action: #selector(goToLogin(sender:)), for: .touchUpInside)
-        let leftBarButton = UIBarButtonItem(customView: leftBtn)
+        self.leftBtn.setImage(UIImage(named: "login"), for: .normal)
+        self.leftBtn.imageView?.contentMode = .scaleAspectFit
+        let leftBarButton = UIBarButtonItem(customView: self.leftBtn)
         
         self.navigationItem.leftBarButtonItem = leftBarButton
         
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil{
+            self.leftBtn.setImage(UIImage(named: "login_active"), for: .normal)
+            self.leftBtn.removeTarget (nil, action: nil, for: .allEvents)
+            self.leftBtn.addTarget(self, action: #selector(goToProfiles(sender:)), for: .touchUpInside)
+        }else{
+            self.leftBtn.setImage(UIImage(named: "login"), for: .normal)
+            self.leftBtn.removeTarget (nil, action: nil, for: .allEvents)
+            self.leftBtn.addTarget(self, action: #selector(goToLogin(sender:)), for: .touchUpInside)
+        }
+    }
+    
+    @objc func goToProfiles(sender: UIButton){
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let profileViewControoler = storyBoard.instantiateViewController(withIdentifier: "PerfilVC")
+        self.present(profileViewControoler, animated: true, completion: nil)
+    }
+    
     @objc func goToLogin(sender: UIButton){
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let loginViewControoler = storyBoard.instantiateViewController(withIdentifier: "LoginVC")
         present(loginViewControoler, animated: true, completion: nil)
-        
     }
+    
+    
     
     @objc func cardDragged(gestureRecognizer: UIPanGestureRecognizer){
         //print("drag \(gesturerecognized.translation(in: view))")
