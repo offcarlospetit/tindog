@@ -25,6 +25,16 @@ class DataBaseService {
         return _user_ref
     }
     
+    func observeUserProfile(handler: @escaping(_ userProfileDict: UserModel?)->Void ){
+        if let currentUser = Auth.auth().currentUser{
+            DataBaseService.instans.user_ref.child(currentUser.uid).observe(.value, with: {(snapshot) in
+                if let userDict = UserModel(snapshot: snapshot){
+                    handler(userDict)
+                }
+            })
+        }
+    }
+    
     func createFireBaseDBUser(uid: String, userData: Dictionary<String, Any>){
         user_ref.child(uid).updateChildValues(userData)
     }

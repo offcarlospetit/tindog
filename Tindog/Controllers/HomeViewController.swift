@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
     
     let leftBtn = UIButton(type: .custom)
     
+    var currentUserProfile: UserModel?
+    
     let revealingSplashScreen = RevealingSplashView(iconImage: UIImage(named: "splash_icon")!, iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: UIColor.white)
     
     
@@ -49,6 +51,11 @@ class HomeViewController: UIViewController {
         let leftBarButton = UIBarButtonItem(customView: self.leftBtn)
         
         self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        
+        DataBaseService.instans.observeUserProfile { (userDict) in
+            self.currentUserProfile = userDict
+        }
         
         // Do any additional setup after loading the view.
     }

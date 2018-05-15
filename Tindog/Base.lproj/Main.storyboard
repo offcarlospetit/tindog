@@ -152,7 +152,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-uI-grz">
                                 <rect key="frame" x="60" y="50" width="255" height="325"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3O-kf-3gK">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crispy_head" translatesAutoresizingMaskIntoConstraints="NO" id="k3O-kf-3gK">
                                         <rect key="frame" x="37.5" y="0.0" width="180" height="180"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="BkY-EC-tCS"/>
@@ -411,6 +411,7 @@
         <image name="Swipe Card" width="356" height="507"/>
         <image name="close_modal" width="23" height="23"/>
         <image name="crispeta" width="1080" height="1079"/>
+        <image name="crispy_head" width="640" height="539"/>
         <image name="like_image" width="170" height="114"/>
         <image name="login_btn_bg" width="256" height="65"/>
         <image name="nope_image" width="197" height="130"/>

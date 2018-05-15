@@ -6,6 +6,7 @@ target 'Tindog' do
   use_frameworks!
   
  pod 'RevealingSplashView'
+ pod 'SDWebImage'
  pod 'Firebase/Core'
  pod 'Firebase/Auth’
  pod ‘Firebase/Database’
