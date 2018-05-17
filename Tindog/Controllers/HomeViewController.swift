@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     let leftBtn = UIButton(type: .custom)
     
     var currentUserProfile: UserModel?
+    var users = [UserModel]()
     
     let revealingSplashScreen = RevealingSplashView(iconImage: UIImage(named: "splash_icon")!, iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: UIColor.white)
     
@@ -52,10 +53,18 @@ class HomeViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = leftBarButton
         
+        Auth.auth().addStateDidChangeListener{(auth,user) in
+            if let user = user{
+                print("Usuario loggeado")
+            }else{
+                print("No ha loggeado")
+            }
+        }
         
         DataBaseService.instans.observeUserProfile { (userDict) in
             self.currentUserProfile = userDict
         }
+        self.getUsers()
         
         // Do any additional setup after loading the view.
     }
@@ -74,14 +83,25 @@ class HomeViewController: UIViewController {
     
     @objc func goToProfiles(sender: UIButton){
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let profileViewControoler = storyBoard.instantiateViewController(withIdentifier: "PerfilVC")
-        self.present(profileViewControoler, animated: true, completion: nil)
+        let profileViewControoler = storyBoard.instantiateViewController(withIdentifier: "PerfilVC") as! PerfilViewController
+        profileViewControoler.currentUserProfile = self.currentUserProfile
+        self.navigationController?.pushViewController(profileViewControoler, animated: true)
     }
     
     @objc func goToLogin(sender: UIButton){
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let loginViewControoler = storyBoard.instantiateViewController(withIdentifier: "LoginVC")
         present(loginViewControoler, animated: true, completion: nil)
+    }
+    
+    func getUsers(){
+        DataBaseService.instans.user_ref.observeSingleEvent(of: .value){(snapshot) in
+            let userSnapshot = snapshot.children.compactMap{UserModel(snapshot: $0 as! DataSnapshot)}
+            for user in userSnapshot{
+                print("user \(user.displayName)")
+                self.users.append(user)
+            }
+        }
     }
     
     

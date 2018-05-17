@@ -15,6 +15,7 @@ struct UserModel{
     let provider: String
     let profileImage: String
     let displayName: String
+    let userIsOnMatch: Bool
     
     init?(snapshot: DataSnapshot){
         let uid = snapshot.key
@@ -22,7 +23,8 @@ struct UserModel{
                 let email = dic["email"] as? String,
                 let provider = dic["provider"] as? String,
                 let displayname = dic["displayName"] as? String,
-                let profileimage = dic["profileImage"] as? String
+                let profileimage = dic["profileImage"] as? String,
+                let userIsOnMatch = dic["userIsOnMatch"] as? Bool
             else {
                 return nil
             
@@ -33,5 +35,6 @@ struct UserModel{
         self.provider = provider
         self.displayName = displayname
         self.profileImage = profileimage
+        self.userIsOnMatch = userIsOnMatch
     }
 }
