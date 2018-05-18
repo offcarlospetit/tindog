@@ -23,10 +23,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeWrapper: UIStackView!
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var nope_image: UIImageView!
+    @IBOutlet weak var cardImage: UIImageView!
+    @IBOutlet weak var labelNameHome: UILabel!
     
     let leftBtn = UIButton(type: .custom)
     
     var currentUserProfile: UserModel?
+    var secondUserUID : String?
+    
+    
+    //var currentMatch: MatchModel?
+    var seconUserUID : String?
     var users = [UserModel]()
     
     let revealingSplashScreen = RevealingSplashView(iconImage: UIImage(named: "splash_icon")!, iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: UIColor.white)
@@ -53,20 +60,20 @@ class HomeViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = leftBarButton
         
-        Auth.auth().addStateDidChangeListener{(auth,user) in
-            if let user = user{
-                print("Usuario loggeado")
-            }else{
-                print("No ha loggeado")
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let user = user {
+                print(user)
+            }else
+            {
+                print("logout")
             }
+            
+            DataBaseService.instans.observeUserProfile { (userDict) in
+                self.currentUserProfile = userDict
+            }
+            
+            self.getUsers()
         }
-        
-        DataBaseService.instans.observeUserProfile { (userDict) in
-            self.currentUserProfile = userDict
-        }
-        self.getUsers()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,7 +108,23 @@ class HomeViewController: UIViewController {
                 print("user \(user.displayName)")
                 self.users.append(user)
             }
+            if self.users.count > 0{
+                self.updateImage(uid: (self.users.first?.uid)!)
+            }
         }
+        
+    }
+    
+    func updateImage(uid: String){
+        DataBaseService.instans.user_ref.child(uid).observeSingleEvent(of: .value){ (snapshot) in
+            print(snapshot)
+            if let userPRofile = UserModel(snapshot: snapshot){
+                self.cardImage.sd_setImage(with: URL(string: (userPRofile.profileImage)), completed: nil)
+                self.labelNameHome.text = userPRofile.displayName
+                self.secondUserUID = userPRofile.uid
+            }
+        }
+        
     }
     
     
@@ -133,6 +156,15 @@ class HomeViewController: UIViewController {
                 
             }
             if self.CardView.center.x > (self.view.bounds.width / 2 + 100){
+                if let uid2 = self.seconUserUID{
+                    DataBaseService.instans.createFireBaseMatch(uid: (self.currentUserProfile?.uid)!, uid2: uid2)
+                }
+                
+            }
+            
+            //Update Image
+            if self.users.count > 0{
+                updateImage(uid: self.users[self.random(0..<self.users.count)].uid)
                 
             }
             
@@ -148,6 +180,10 @@ class HomeViewController: UIViewController {
 
             
         }
+    }
+    
+    func random(_ range: Range<Int>)->Int{
+        return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound)))
     }
 
     override func didReceiveMemoryWarning() {

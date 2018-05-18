@@ -129,7 +129,9 @@
                     <navigationItem key="navigationItem" id="gOI-rh-7Ng"/>
                     <connections>
                         <outlet property="CardView" destination="GZB-rH-fdD" id="apI-Dq-ZKr"/>
+                        <outlet property="cardImage" destination="Fru-4D-JH3" id="DwG-QE-XqX"/>
                         <outlet property="homeWrapper" destination="5Jv-jp-IBx" id="sip-Xy-UGr"/>
+                        <outlet property="labelNameHome" destination="cSz-6t-K1Y" id="IGP-eF-5IB"/>
                         <outlet property="likeImage" destination="MVz-ER-vYx" id="Q2q-Jg-xRM"/>
                         <outlet property="nope_image" destination="vjs-RU-HnH" id="aTI-pm-Ikn"/>
                     </connections>
