@@ -45,7 +45,7 @@ class DataBaseService {
     }
     
     func createFireBaseMatch(uid: String, uid2: String){
-        match_ref.child(uid).updateChildValues(["uid2": uid2, "matchIsAccepter": false])
+        match_ref.child(uid).updateChildValues(["uid2": uid2, "mathcIsAccepted": false])
     }
     
 }

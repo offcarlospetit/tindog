@@ -27,13 +27,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var labelNameHome: UILabel!
     
     let leftBtn = UIButton(type: .custom)
+    let rigthBtn = UIButton(type: .custom)
     
     var currentUserProfile: UserModel?
     var secondUserUID : String?
     
     
     //var currentMatch: MatchModel?
-    var seconUserUID : String?
     var users = [UserModel]()
     
     let revealingSplashScreen = RevealingSplashView(iconImage: UIImage(named: "splash_icon")!, iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: UIColor.white)
@@ -60,6 +60,12 @@ class HomeViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = leftBarButton
         
+        self.rigthBtn.setImage(UIImage(named: "match_inactive"), for: .normal)
+        self.rigthBtn.imageView?.contentMode = .scaleAspectFit
+        let rigtBarButton = UIBarButtonItem(customView: self.rigthBtn)
+        
+        self.navigationItem.rightBarButtonItem = rigtBarButton
+        
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
                 print(user)
@@ -73,6 +79,20 @@ class HomeViewController: UIViewController {
             }
             
             self.getUsers()
+            UpdateDBService.instance.observerMatch {(matchDict) in
+                print("prueba \(String(describing: matchDict))")
+                if let match = matchDict{
+                    //usuario 2 match.uid2
+                    if let user = self.currentUserProfile{
+                        if user.userIsOnMatch == false {
+                            print("tienes un match")
+                            self.rigthButtonBtn(active: true)
+                        }
+                    }
+                }else{
+                    self.rigthButtonBtn(active: false)
+                }
+            }
         }
     }
     
@@ -115,10 +135,20 @@ class HomeViewController: UIViewController {
         
     }
     
+    func rigthButtonBtn(active: Bool) {
+        if active{
+            self.rigthBtn.setImage(UIImage(named: "match_active"), for: .normal)
+        }
+        else{
+            self.rigthBtn.setImage(UIImage(named: "match_inactive"), for: .normal)
+        }
+    }
+    
     func updateImage(uid: String){
         DataBaseService.instans.user_ref.child(uid).observeSingleEvent(of: .value){ (snapshot) in
             print(snapshot)
             if let userPRofile = UserModel(snapshot: snapshot){
+                self.secondUserUID = userPRofile.uid
                 self.cardImage.sd_setImage(with: URL(string: (userPRofile.profileImage)), completed: nil)
                 self.labelNameHome.text = userPRofile.displayName
                 self.secondUserUID = userPRofile.uid
@@ -156,7 +186,7 @@ class HomeViewController: UIViewController {
                 
             }
             if self.CardView.center.x > (self.view.bounds.width / 2 + 100){
-                if let uid2 = self.seconUserUID{
+                if let uid2 = self.secondUserUID{
                     DataBaseService.instans.createFireBaseMatch(uid: (self.currentUserProfile?.uid)!, uid2: uid2)
                 }
                 

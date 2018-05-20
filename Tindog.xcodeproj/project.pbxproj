@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7BCDE4024CA00B2C535CE658 /* Pods_TindogUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F09F874E3573FFF4317772 /* Pods_TindogUITests.framework */; };
 		C20A98C520A3445C00C482E2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A98C420A3445C00C482E2 /* HomeViewController.swift */; };
+		C244045C20B0DA68002724D6 /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C244045B20B0DA68002724D6 /* MatchModel.swift */; };
+		C244045E20B0DEAD002724D6 /* UpdateDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C244045D20B0DEAD002724D6 /* UpdateDBService.swift */; };
 		C246508720AA8A290089E4A9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C246508620AA8A290089E4A9 /* UserModel.swift */; };
 		C267FA9820A09A5400B6B0B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FA9720A09A5400B6B0B9 /* AppDelegate.swift */; };
 		C267FA9D20A09A5400B6B0B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C267FA9B20A09A5400B6B0B9 /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		B996043480FA659F04648EAC /* Pods_Tindog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tindog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AF081505C3E857105CDA40 /* Pods-TindogUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TindogUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TindogUITests/Pods-TindogUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C20A98C420A3445C00C482E2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C244045B20B0DA68002724D6 /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
+		C244045D20B0DEAD002724D6 /* UpdateDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDBService.swift; sourceTree = "<group>"; };
 		C246508620AA8A290089E4A9 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C267FA9420A09A5400B6B0B9 /* Tindog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tindog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C267FA9720A09A5400B6B0B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				C246508620AA8A290089E4A9 /* UserModel.swift */,
+				C244045B20B0DA68002724D6 /* MatchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				C2BDD6A820A78D44008997BE /* DataBaseService.swift */,
+				C244045D20B0DEAD002724D6 /* UpdateDBService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -443,9 +449,11 @@
 				C267FAA020A09A5400B6B0B9 /* Tindog.xcdatamodeld in Sources */,
 				C246508720AA8A290089E4A9 /* UserModel.swift in Sources */,
 				C2BDD6A920A78D44008997BE /* DataBaseService.swift in Sources */,
+				C244045E20B0DEAD002724D6 /* UpdateDBService.swift in Sources */,
 				C28669B020A53FEA00FE97D3 /* UIViewExt.swift in Sources */,
 				C267FA9820A09A5400B6B0B9 /* AppDelegate.swift in Sources */,
 				C2BDD6B120A91451008997BE /* PerfilViewController.swift in Sources */,
+				C244045C20B0DA68002724D6 /* MatchModel.swift in Sources */,
 				C20A98C520A3445C00C482E2 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

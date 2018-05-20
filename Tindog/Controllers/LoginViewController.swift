@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
                             }
                             else{
                                 print("Cuenta Creada")
-                                let userData = ["provider" : user?.providerID as Any, "email" : user?.email as Any, "profileImage": "https://scontent.fscl6-1.fna.fbcdn.net/v/t1.0-9/26047264_10215254347736707_4161256811649393988_n.jpg?_nc_cat=0&oh=98cd1edfe7507dd9abe967a68b6273a7&oe=5B867232", "displayName": "offcarlospetit" ] as [String: Any]
+                                let userData = ["provider" : user?.providerID as Any, "email" : user?.email as Any, "profileImage": "https://scontent.fscl6-1.fna.fbcdn.net/v/t1.0-9/26047264_10215254347736707_4161256811649393988_n.jpg?_nc_cat=0&oh=98cd1edfe7507dd9abe967a68b6273a7&oe=5B867232", "displayName": "offcarlospetit", "userIsOnMatch": false] as [String: Any]
                                 if let user = user{
                                     DataBaseService.instans.createFireBaseDBUser(uid: user.uid, userData: userData)
                                 }
