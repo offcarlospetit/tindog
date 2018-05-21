@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
     let rigthBtn = UIButton(type: .custom)
     
     var currentUserProfile: UserModel?
+    var currentMatch: MatchModel?
     var secondUserUID : String?
     
     
@@ -76,23 +77,23 @@ class HomeViewController: UIViewController {
             
             DataBaseService.instans.observeUserProfile { (userDict) in
                 self.currentUserProfile = userDict
+                UpdateDBService.instance.observerMatch {(matchDict) in
+                    if let match = matchDict{
+                        //usuario 2 match.uid2
+                        if let user = self.currentUserProfile{
+                            if user.userIsOnMatch == false {
+                                self.currentMatch = match
+                                self.rigthButtonBtn(active: true)
+                            }
+                        }
+                    }else{
+                        self.rigthButtonBtn(active: false)
+                    }
+                }
             }
             
             self.getUsers()
-            UpdateDBService.instance.observerMatch {(matchDict) in
-                print("prueba \(String(describing: matchDict))")
-                if let match = matchDict{
-                    //usuario 2 match.uid2
-                    if let user = self.currentUserProfile{
-                        if user.userIsOnMatch == false {
-                            print("tienes un match")
-                            self.rigthButtonBtn(active: true)
-                        }
-                    }
-                }else{
-                    self.rigthButtonBtn(active: false)
-                }
-            }
+            
         }
     }
     
@@ -121,12 +122,23 @@ class HomeViewController: UIViewController {
         present(loginViewControoler, animated: true, completion: nil)
     }
     
+    @objc func goMatch(sender: UIButton){
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let MatchViewControoler = storyBoard.instantiateViewController(withIdentifier: "MatchVC") as! MatchViewController
+        MatchViewControoler.currentUserProfile = self.currentUserProfile
+        MatchViewControoler.curentMatch = self.currentMatch
+        present(MatchViewControoler, animated: true, completion: nil)
+    }
+    
     func getUsers(){
         DataBaseService.instans.user_ref.observeSingleEvent(of: .value){(snapshot) in
             let userSnapshot = snapshot.children.compactMap{UserModel(snapshot: $0 as! DataSnapshot)}
             for user in userSnapshot{
                 print("user \(user.displayName)")
-                self.users.append(user)
+                if self.currentUserProfile?.uid != user.uid{
+                    self.users.append(user)
+                }
+                
             }
             if self.users.count > 0{
                 self.updateImage(uid: (self.users.first?.uid)!)
@@ -138,8 +150,11 @@ class HomeViewController: UIViewController {
     func rigthButtonBtn(active: Bool) {
         if active{
             self.rigthBtn.setImage(UIImage(named: "match_active"), for: .normal)
+            self.rigthBtn.removeTarget (nil, action: nil, for: .allEvents)
+            self.rigthBtn.addTarget(self, action: #selector(goMatch(sender:)), for: .touchUpInside)
         }
         else{
+            self.rigthBtn.removeTarget (nil, action: nil, for: .allEvents)
             self.rigthBtn.setImage(UIImage(named: "match_inactive"), for: .normal)
         }
     }

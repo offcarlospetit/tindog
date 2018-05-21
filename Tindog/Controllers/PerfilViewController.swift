@@ -44,10 +44,7 @@ class PerfilViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.profileImage.sd_setImage(with: URL(string: (self.currentUserProfile?.profileImage)!), completed: nil)
-        self.profileImage.layer.cornerRadius = self.profileImage.bounds.size.height / 2
-        self.profileImage.layer.borderColor = UIColor.white.cgColor
-        self.profileImage.layer.borderWidth = 1.0
-        self.profileImage.clipsToBounds = true
+        self.profileImage.rounded()
         
         self.profileDisplayEmail.text = self.currentUserProfile?.email
         

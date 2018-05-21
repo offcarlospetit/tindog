@@ -215,7 +215,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IS-tJ-6aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1464.8" y="425.93703148425789"/>
+            <point key="canvasLocation" x="1321" y="152"/>
+        </scene>
+        <!--Match View Controller-->
+        <scene sceneID="MbB-cR-62d">
+            <objects>
+                <viewController storyboardIdentifier="MatchVC" id="BuU-8x-See" customClass="MatchViewController" customModule="Tindog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l91-aC-fGu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="v2p-N5-lx2">
+                                <rect key="frame" x="16" y="86" width="343" height="368.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5BW-Wc-GeC">
+                                        <rect key="frame" x="34.5" y="0.0" width="274.5" height="115.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Its a Match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETE-h8-RPa">
+                                                <rect key="frame" x="28.5" y="0.0" width="217.5" height="80"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="50"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You and other person have a match " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgp-4Q-exl">
+                                                <rect key="frame" x="0.0" y="95" width="274.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="87" translatesAutoresizingMaskIntoConstraints="NO" id="xjN-62-9Ys">
+                                        <rect key="frame" x="0.0" y="145.5" width="343" height="128"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hZF-HZ-wUW">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="O4h-eS-4UC"/>
+                                                    <constraint firstAttribute="width" constant="128" id="oAc-yA-v7Q"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eX6-W0-iTA">
+                                                <rect key="frame" x="215" y="0.0" width="128" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="128" id="TiL-YC-QdW"/>
+                                                    <constraint firstAttribute="height" constant="128" id="pjB-QM-rMO"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flO-YA-nyO">
+                                        <rect key="frame" x="43.5" y="303.5" width="256" height="65"/>
+                                        <state key="normal" backgroundImage="login_btn_bg"/>
+                                        <connections>
+                                            <action selector="doneBtnAction:" destination="BuU-8x-See" eventType="touchUpInside" id="B3P-N9-M1Y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4dY-Qj-tsg" firstAttribute="trailing" secondItem="v2p-N5-lx2" secondAttribute="trailing" constant="16" id="OlZ-Im-eyS"/>
+                            <constraint firstItem="v2p-N5-lx2" firstAttribute="top" secondItem="4dY-Qj-tsg" secondAttribute="top" constant="66" id="aqX-ci-wbj"/>
+                            <constraint firstItem="v2p-N5-lx2" firstAttribute="centerX" secondItem="l91-aC-fGu" secondAttribute="centerX" id="oVy-lZ-K4i"/>
+                            <constraint firstItem="v2p-N5-lx2" firstAttribute="leading" secondItem="4dY-Qj-tsg" secondAttribute="leading" constant="16" id="xOJ-eN-KpX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4dY-Qj-tsg"/>
+                    </view>
+                    <connections>
+                        <outlet property="copyMatchLabel" destination="Fgp-4Q-exl" id="7XV-Q4-eXt"/>
+                        <outlet property="dondeBtn" destination="flO-YA-nyO" id="n1P-AM-3ah"/>
+                        <outlet property="firtsUserMatch" destination="hZF-HZ-wUW" id="T1g-QR-B4S"/>
+                        <outlet property="secondUserMatch" destination="eX6-W0-iTA" id="oYe-xz-b1y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wK2-tJ-ToO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1524" y="1095.2023988005999"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="M6K-c6-emc">
@@ -391,7 +468,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jf5-3I-2bj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="-340"/>
+            <point key="canvasLocation" x="1321" y="-573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8i8-CN-GdM">

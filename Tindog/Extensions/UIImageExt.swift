@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIImageView {
+    func rounded(){
+        self.layer.cornerRadius = self.bounds.size.height / 2
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 1.0
+        self.clipsToBounds = true
+    }
+    
+}

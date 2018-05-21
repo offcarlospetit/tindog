@@ -48,6 +48,18 @@ class DataBaseService {
         match_ref.child(uid).updateChildValues(["uid2": uid2, "mathcIsAccepted": false])
     }
     
+    func updateFireBaseMatch(uid: String){
+        match_ref.child(uid).updateChildValues(["mathcIsAccepted": true])
+    }
+    
+    func getUserProfile(uid: String, handler: @escaping(_ profileDict: UserModel?) -> Void){
+        DataBaseService.instans._user_ref.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            if let profileDict = UserModel(snapshot: snapshot){
+                handler(profileDict)
+            }
+        }
+    }
+    
 }
 
 
